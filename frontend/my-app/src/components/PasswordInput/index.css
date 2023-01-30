@@ -1,0 +1,36 @@
+.passwordInputContainer {
+  width: 470px;
+  border-radius: 5px;
+  margin: 15px auto 0px auto;
+  background-color: #eeeeee;
+  /* height: 48px; */
+  position: relative;
+  border: 2px solid transparent;
+  /* padding-left: 10px; */
+}
+
+.passwordInputContainer .passwordLabel {
+  position: absolute;
+  font-size: 16px;
+  letter-spacing: 1;
+  font-weight: 400;
+  font-family: Red Hat Display;
+  top: 20px;
+  left: 20px;
+  pointer-events: none;
+  transition-duration: 1s;
+  transform: scale(1);
+  /* color: #   D8D2CB; */
+}
+.passwordInputContainer input {
+  height: 30px;
+  background-color: #eeeeee;
+  border: 0px;
+  width: 100%;
+  padding: 30px 10px 0px 10px;
+}
+
+.passwordInputContainer input:focus {
+  border: 0px;
+  outline: none;
+}

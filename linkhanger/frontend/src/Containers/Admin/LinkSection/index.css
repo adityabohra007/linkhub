@@ -1,0 +1,24 @@
+.adminPageContainer div.mainSection div.linkSection {
+  /* width: 50%; */
+  /* overflow-y: scroll; */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.adminPageContainer div.mainSection div.linkSection .buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.adminPageContainer div.mainSection div.linkSection .listDataWrapper {
+  margin: 30px auto 10px auto;
+  padding-bottom: 100;
+}
+.adminPageContainer div.mainSection div.linkSection .listData {
+  list-style: none;
+  padding: 0;
+  padding-bottom: 40;
+  display: flex;
+  flex-direction: column;
+}

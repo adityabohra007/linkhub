@@ -1,0 +1,56 @@
+@media only screen and (max-width: 600px) {
+}
+
+@media screen and (min-width: 1024px) {
+}
+.adminPageWrapper {
+  height: 100%;
+  display: flex;
+}
+
+.adminPageWrapper section.leftMenu {
+  border-right: 1px solid #d8d2cb;
+  height: 100vh;
+  flex-basis: 2%;
+}
+
+.adminPageContainer section.mainTopMenu {
+  /* height: 70px; */
+  height: 70px;
+  border-bottom: 1px solid #d8d2cb;
+  display: flex;
+  background-color: white;
+  padding: 0px 30px;
+}
+
+.adminPageContainer div.mainSection {
+  flex-basis: 100%;
+  background-color: #eeeeee;
+  height: 100%;
+}
+.adminPageContainer section.mainTopMenu a {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-size: 18px;
+  font-family: Red Hat Display;
+  text-decoration: none;
+  color: black;
+  border-bottom: 2px solid transparent;
+}
+
+.adminPageContainer section.mainTopMenu a:hover {
+  border-bottom: 2px solid gray;
+}
+
+.adminPageContainer div.mainSection div.LinkSectionWrapper {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+/* Preview */
+.adminPageContainer div.mainSection div.previewSection {
+  flex: 1;
+  display: none;
+}
