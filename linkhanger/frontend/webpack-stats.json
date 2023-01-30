@@ -1,0 +1,22 @@
+{
+  "status": "done",
+  "assets": {
+    "d58f359c78344b03d6388656b301ec43.jpg": {
+      "name": "d58f359c78344b03d6388656b301ec43.jpg",
+      "path": "/home/abohra/Documents/Dev/projects/linkHanger/linkhanger/frontend/assets/webpack_bundles/d58f359c78344b03d6388656b301ec43.jpg"
+    },
+    "main-605f226f91d14f7330ec.js": {
+      "name": "main-605f226f91d14f7330ec.js",
+      "path": "/home/abohra/Documents/Dev/projects/linkHanger/linkhanger/frontend/assets/webpack_bundles/main-605f226f91d14f7330ec.js"
+    },
+    "main-605f226f91d14f7330ec.js.LICENSE.txt": {
+      "name": "main-605f226f91d14f7330ec.js.LICENSE.txt",
+      "path": "/home/abohra/Documents/Dev/projects/linkHanger/linkhanger/frontend/assets/webpack_bundles/main-605f226f91d14f7330ec.js.LICENSE.txt"
+    }
+  },
+  "chunks": {
+    "main": [
+      "main-605f226f91d14f7330ec.js"
+    ]
+  }
+}
