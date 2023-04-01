@@ -8,6 +8,8 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { linkActions } from "../../redux/actions/link.action";
 import { FiEdit2 } from "react-icons/fi";
+import { GrFormEdit } from "react-icons/gr";
+import { MdOutlineEdit } from "react-icons/md";
 import { FaDirections } from "react-icons/fa";
 import {
   useLinkDeleteMutation,
@@ -207,11 +209,11 @@ export const LinkInput = (props) => {
                 >
                   {initialData.title ? initialData.title : "Title"}
                 </div>
-                <FiEdit2
-                  size={16}
+                <MdOutlineEdit
+                  size={20}
                   color={"black"}
                   style={{ marginLeft: 5, cursor: "pointer" }}
-                ></FiEdit2>
+                ></MdOutlineEdit>
               </div>
             )}
             {inputEditing.url ? (
