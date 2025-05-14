@@ -7,11 +7,12 @@ import { RouteContainer } from "../Containers/Routes";
 import store from "../redux/store";
 import { ThemeProvider } from "@mui/material";
 import theme from "../theme";
-
+import { ChakraProvider } from "@chakra-ui/react";
 const App = () => {
   console.log("app");
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
+    <ChakraProvider>
       <Provider store={store}>
         <CookiesProvider>
           <BrowserRouter>
@@ -19,7 +20,9 @@ const App = () => {
           </BrowserRouter>
         </CookiesProvider>
       </Provider>
-    </ThemeProvider>
+    </ChakraProvider>
+
+    // </ThemeProvider>
   );
 };
 export default App;

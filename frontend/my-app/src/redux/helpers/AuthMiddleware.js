@@ -44,7 +44,7 @@ const AuthMiddleware = ({ children }) => {
   //     }, 1000);
   //   }
   // }, [isLoading, isFetching, isError]);
-
+  if(isError) return <h3>Error:{error.status}</h3>
   if (isFetching && isLocalLoading) {
     return <h1>Loading Auth</h1>;
   }

@@ -17,12 +17,12 @@ export const RouteContainer = () => {
   }, []);
   if (isLoading) return <div>Loading</div>;
   return (
-    <AuthMiddleware>
+    // <AuthMiddleware>
       <Routes>
         <Route path="/" element={<p>Home</p>}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/logout" element={<h1>Logout</h1>}></Route>
-        <Route
+        {/* <Route path="/login" element={<><h2>Login</h2><Login /></>}></Route>
+        <Route path="/logout" element={<h1>Logout</h1>}></Route> */}
+        {/* <Route
           exact
           path="/home"
           element={
@@ -41,9 +41,9 @@ export const RouteContainer = () => {
               <p>There's nothing here!</p>
             </main>
           }
-        />
+        /> */}
         {/* <PrivateRoute exact path="/teacher" component={TeacherHomeworkAdd} /> */}
       </Routes>
-    </AuthMiddleware>
+    // </AuthMiddleware>
   );
 };

@@ -25,8 +25,11 @@ class LinkView(APIView):
 
 class LinkRetrieveUpdateDestoryAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Link.objects.all()
+    lookup_url_kwarg="pk"
     serializer_class = LinkSerializer
 
+    # def delete(self, request, *args, **kwargs):
+    #     return super().delete(request, *args, **kwargs)
     # def update(self, request, *args, **kwargs):
     #     instance = self.get_object()
     #     data = {'status': request.data.get('status')}

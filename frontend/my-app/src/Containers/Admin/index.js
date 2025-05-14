@@ -1,15 +1,9 @@
 import React from "react";
 import { Header } from "../../components/Header";
-import logo from "./../../public/images/preview-xl-crop.jpg";
 import "./index.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useMediaQuery } from "react-responsive";
+import { useDispatch } from "react-redux";
 import { LinkSection } from "./LinkSection";
-import { logout } from "../../redux/features/auth/authSlice";
-import { userApi } from "../../redux/api/userApi";
 import { useNavigate } from "react-router-dom";
-import { Fab, Grid } from "@mui/material";
-import NavigationIcon from "@mui/icons-material/Navigation";
 export const Admin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
