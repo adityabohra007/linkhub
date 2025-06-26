@@ -160,14 +160,14 @@ export const Login = () => {
       <Container>
         <form>
           <FormControl>
-            <InputGroup>
+            {/* <InputGroup>
               <InputAddon children="linkhanger.com/" />
               <Input
                 defaultValue={""}
                 {...register("Username")}
                 focusBorderColor={"green"}
               />
-            </InputGroup>
+            </InputGroup> */}
           </FormControl>
           <FormControl mt={4}>
             <FormLabel>Password</FormLabel>

@@ -13,16 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('api/', include('api.urls')),
-    path(r"graphql", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+# from userauth.views import LoginView
 
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + [path('', include('frontend.urls'))]
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        # path("api/dj-rest-auth/login", LoginView.as_view(), name="rest_login"),
+        path("api/dj-rest-auth/", include("dj_rest_auth.urls")),
+        path("api/", include("api.urls")),
+        path(r"graphql", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    ]
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    + [path("", include("frontend.urls"))]
+)

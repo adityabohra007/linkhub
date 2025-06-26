@@ -20,8 +20,8 @@ export const RouteContainer = () => {
     // <AuthMiddleware>
       <Routes>
         <Route path="/" element={<p>Home</p>}></Route>
-        {/* <Route path="/login" element={<><h2>Login</h2><Login /></>}></Route>
-        <Route path="/logout" element={<h1>Logout</h1>}></Route> */}
+        <Route path="/login" element={<><h2>Login</h2><Login /></>}></Route>
+        {/* <Route path="/logout" element={<h1>Logout</h1>}></Route> */}
         {/* <Route
           exact
           path="/home"
