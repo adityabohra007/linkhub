@@ -3,7 +3,7 @@ asgiref==3.5.2
 autopep8==2.3.2
 dj-rest-auth==5.0.1
 Django==4.1.2
-django-cors-headers==3.13.0
+django-cors-headers
 django-webpack-loader==1.6.0
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
@@ -16,7 +16,6 @@ promise==2.3
 pycodestyle==2.14.0
 PyJWT==2.6.0
 pytz==2022.5
-simplejwt==2.0.1
 six==1.16.0
 sqlparse==0.4.3
 text-unidecode==1.3
