@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-+=&1nxqwgtqh)#!x0jgkc2@(o%sh%erj!r%@%s11mpwo9!e3cg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -68,9 +68,7 @@ REST_FRAMEWORK = {
         # "userauth.authenticate.CustomAuthentication",
     )
 }
-REST_USE_JWT = True
-JWT_AUTH_COOKIE = "linkhanger-token"
-JWT_AUTH_REFRESH_COOKIE = "linkhanger-refresh-token"
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -81,24 +79,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-# CORS_ALLOW_ALL_ORIGINS=True
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000",]
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_METHODS = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT", "FETCH"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
-CORS_ALLOW_HEADERS = [
-    "accept",
-    "accept-encoding",
-    "authorization",
-    "content-type",
-    "dnt",
-    "origin",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-]
 
-CSRF_COOKIE_SECURE = False
 ROOT_URLCONF = "linkhanger.urls"
 
 TEMPLATES = [
@@ -189,8 +170,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media", "themes")
 
-JWT_COOKIE_SECURE = False
-JWT_COOKIE_HTTP_ONLY=True
+JWT_COOKIE_SECURE = True
+JWT_AUTH_SAMESITE = "None"  # 'Lax' or 'Strict' if not cross-site
+JWT_COOKIE_HTTP_ONLY = True
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=2),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
@@ -218,4 +200,59 @@ SIMPLE_JWT = {
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+
+# CORS_ALLOW_ALL_ORIGINS=True
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost",
+]
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = ["DELETE", "GET", "OPTIONS", "PATCH", "POST", "PUT", "FETCH"]
+CSRF_TRUSTED_ORIGINS = ["https://localhost"]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+CSRF_COOKIE_SECURE = False
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = "linkhanger-token"
+JWT_AUTH_REFRESH_COOKIE = "linkhanger-refresh-token"
 APPEND_SLASH = False
+
+
+REST_AUTH = {
+    "LOGIN_SERIALIZER": "dj_rest_auth.serializers.LoginSerializer",
+    "TOKEN_SERIALIZER": "dj_rest_auth.serializers.TokenSerializer",
+    "JWT_SERIALIZER": "dj_rest_auth.serializers.JWTSerializer",
+    "JWT_SERIALIZER_WITH_EXPIRATION": "dj_rest_auth.serializers.JWTSerializerWithExpiration",
+    "JWT_TOKEN_CLAIMS_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
+    "USER_DETAILS_SERIALIZER": "dj_rest_auth.serializers.UserDetailsSerializer",
+    "PASSWORD_RESET_SERIALIZER": "dj_rest_auth.serializers.PasswordResetSerializer",
+    "PASSWORD_RESET_CONFIRM_SERIALIZER": "dj_rest_auth.serializers.PasswordResetConfirmSerializer",
+    "PASSWORD_CHANGE_SERIALIZER": "dj_rest_auth.serializers.PasswordChangeSerializer",
+    "REGISTER_SERIALIZER": "dj_rest_auth.registration.serializers.RegisterSerializer",
+    "REGISTER_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
+    "TOKEN_MODEL": "rest_framework.authtoken.models.Token",
+    "TOKEN_CREATOR": "dj_rest_auth.utils.default_create_token",
+    "PASSWORD_RESET_USE_SITES_DOMAIN": False,
+    "OLD_PASSWORD_FIELD_ENABLED": False,
+    "LOGOUT_ON_PASSWORD_CHANGE": False,
+    "SESSION_LOGIN": True,
+    "USE_JWT": True,
+    "JWT_AUTH_COOKIE": "access_token",
+    "JWT_AUTH_REFRESH_COOKIE": "refresh_token",
+    "JWT_AUTH_REFRESH_COOKIE_PATH": "/",
+    "JWT_AUTH_SECURE": False,
+    "JWT_AUTH_HTTPONLY": True,
+    "JWT_AUTH_SAMESITE": "Lax",
+    "JWT_AUTH_RETURN_EXPIRATION": False,
+    "JWT_AUTH_COOKIE_USE_CSRF": False,
+    "JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED": False,
+}

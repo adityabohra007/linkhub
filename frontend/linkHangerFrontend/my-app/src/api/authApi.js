@@ -1,22 +1,15 @@
 
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const customFetchBaseQuery = fetchBaseQuery({
-    baseUrl: process.env.NEXT_PUBLIC_API_ROOT,
-    prepareHeaders: (headers, { getState }) => {
-        // const token = getState().auth.token
-        // if (token) {
-        // console.log('token', token)
-        // headers.set('x-csrf',getCookie('csrftoken'))
-        // headers.set('Authorization', "Basic " + btoa(APPLICATION__USER + ":" + APPLICATION_PASSWORD))
-        headers.set('Content-Type', 'application/json')
-        // console.log(headers, 'insider ');
-        // }
-        // console.log(headers, 'header ')
-        return headers
-    },
-    // credentials: 'include'
-})
+    export const customFetchBaseQuery = fetchBaseQuery({
+        baseUrl: process.env.NEXT_PUBLIC_API_ROOT,
+        credentials:"include",
+        prepareHeaders: (headers, { getState }) => {
+            headers.set('Content-Type', 'application/json')
+            return headers
+        },
+        
+    })
 export const authApi = createApi({
     reducerPath: 'authApi',
     baseQuery: customFetchBaseQuery,
@@ -42,7 +35,7 @@ export const authApi = createApi({
         // }),
         user: builder.query({
             query: (body) => ({
-                url: 'user',
+                url: 'api/dj-rest-auth/user/',
                 method: 'GET',
             }),
             // providesTags: ['user']
@@ -90,5 +83,5 @@ export const authApi = createApi({
         })
     })
 })
-export const { useLoginMutation, useValidateTokenMutation, useLazyUserQuery, useGoogleMutation, useLogoutMutation, useGetUserQuery } = authApi;
+export const { useLoginMutation, useValidateTokenMutation, useLazyUserQuery, useUserQuery, useGoogleMutation, useLogoutMutation, useGetUserQuery } = authApi;
 

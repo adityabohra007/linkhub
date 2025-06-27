@@ -3,8 +3,8 @@ export const auth = createSlice({
     name: 'auth',
     initialState: { token: undefined, refresh_token: "", loggedIn: false },
     reducers: {
-        setLoggedIn: (state) => {
-            state.loggedIn = true;
+        setLoggedIn: (state, payload) => {
+            state.loggedIn = payload;
         },
         addToken: (state, action) => {
             if (action.payload !== -1) {

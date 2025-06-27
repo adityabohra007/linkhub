@@ -2,25 +2,25 @@
 import { useSelector } from 'react-redux'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useGetUserQuery, useUserQuery } from '@/api/authApi'
 
 const withAuth = (Component) => {
     return function ProtectedComponent(props) {
         const router = useRouter()
-        const token = useSelector((state) => state.auth.token)
+        const user = useUserQuery()
 
 
         const [checked, setChecked] = useState(false);
 
         useEffect(() => {
-            const localToken = localStorage.getItem('token');
 
-            if (!token && !localToken) {
+            if (user.isLoading == false && !user.isSuccess) {
                 router.replace('/login');
             }
             setChecked(true)
-        }, [token])
-        if (!checked) return <div>Loading...</div>;
-        if (!token && !localStorage.getItem('auth_token')) return null;
+        }, [user])
+        if (user.isLoading) return <div>Loading...</div>;
+        // if (!token && !localStorage.getItem('auth_token')) return null;
         return <Component {...props} />
     }
 }
