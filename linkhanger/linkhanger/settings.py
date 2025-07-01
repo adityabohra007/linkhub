@@ -104,12 +104,33 @@ WSGI_APPLICATION = "linkhanger.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# import dj_database_url
+
+# DATABASES = {
+#     'default': dj_database_url.parse(
+#         'postgresql://postgres:2718@Adityabohra@db.rxgcqzbatxsrgxvsrawd.supabase.co:5432/postgres'
+#         # 'postgresql://postgres:2718@Adityabohra@https://rxgcqzbatxsrgxvsrawd.supabase.co:5432/postgres'
+#     )
+# }
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
+
+# if DEBUG:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": BASE_DIR / "db.sqlite3",
+#         }
+#     }
+
 # DATABASES = {
 #        'default': {
 #            'ENGINE': 'djongo',
@@ -227,4 +248,8 @@ REST_AUTH = {
     "JWT_AUTH_RETURN_EXPIRATION": False,
     "JWT_AUTH_COOKIE_USE_CSRF": False,
     "JWT_AUTH_COOKIE_ENFORCE_CSRF_ON_UNAUTHENTICATED": False,
+}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=7),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }

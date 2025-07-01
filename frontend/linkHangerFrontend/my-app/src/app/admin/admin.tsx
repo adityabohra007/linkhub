@@ -4,13 +4,13 @@ import { IoReorderThree } from "react-icons/io5";
 import React, { useState } from "react";
 import { Header } from "../../components/Header";
 import "./index.css";
-
+import Sidebar from "../../components/Sidebar";
 // import { useDispatch } from "react-redux";
 import { LinkSection } from "../../components/LinkSection";
 import { ADDRCONFIG } from "dns";
 import BottomNavigation from "@/components/BottomNavigation";
 import DeviceFrame from "@/components/DeviceFrame";
-import { Button, Sidebar } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { CiSettings } from "react-icons/ci";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MdOutlineDesignServices } from "react-icons/md";
@@ -69,7 +69,7 @@ const Admin = () => {
               }}
               isOpen={isOpen}
             >
-                {}
+              {}
             </BottomDrawer>
             <div className="flex ">
               <Button
@@ -182,7 +182,7 @@ const Admin = () => {
       <BottomNavigation />
       <div className="Container md:grid hidden">
         <Sidebar />
-        <div className="Main bg-[#e9e9e9]">
+        <div className="Main bg-[#e9e9e9] h-screen">
           <div className="Navigation col-span-2">
             <Header></Header>
             {/* <section className="mainTopMenu">
@@ -196,10 +196,10 @@ const Admin = () => {
             My Hanger <a href="#">http://site/abohra</a>
           </p>
         </div> */}
-          <div className="LinkEdit mx-auto bg-gray-100">
+          <div className="LinkEdit mx-auto bg-gray-100 h-full">
             <LinkSection></LinkSection>
           </div>
-          <div className="LinkPreview px-10 z-10 ">
+          <div className="LinkPreview px-10 z-10 h-full ">
             <DeviceFrame />
           </div>
         </div>

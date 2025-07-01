@@ -25,6 +25,7 @@ const Login = () => {
   const router = useRouter();
   useEffect(() => {
     if (login[1].isSuccess) {
+      console.info('Succesfully logged in')
       dispatch(setLoggedIn(true));
       router.push("/admin");
     }

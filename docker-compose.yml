@@ -16,6 +16,12 @@ services:
       - 8001:8000
     depends_on:
       - db
+    environment:
+      - DB_NAME=postgres
+      - DB_USER=testuser
+      - DB_PASSWORD=testpassword
+      - DB_HOST=db
+      - DB_PORT=5432
     # env_file:
     #   - ./.env.dev
     #   - ./.env.secrets

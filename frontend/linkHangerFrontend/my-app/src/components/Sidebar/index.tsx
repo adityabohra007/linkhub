@@ -27,7 +27,7 @@ function Component() {
     <Sidebar
       aria-label="Default sidebar example"
       style={{ fontSize: "8px" }}
-      className="bg-[#ecece9] w-[200px]"
+      className=" w-[200px]"
     >
       <SidebarItems>
         <Drop />
@@ -63,12 +63,12 @@ function Component() {
           >
             Analytics
           </SidebarItem>
-          <SidebarItem className="text-sm" href="#" icon={HiArrowSmRight}>
+          {/* <SidebarItem className="text-sm" href="#" icon={HiArrowSmRight}>
             Sign In
           </SidebarItem>
           <SidebarItem className="text-sm" href="#" icon={HiTable}>
             Sign Up
-          </SidebarItem>
+          </SidebarItem> */}
           <span className="p-4 font-extrabold text-[10px] text-gray-400">
             Tools
           </span>

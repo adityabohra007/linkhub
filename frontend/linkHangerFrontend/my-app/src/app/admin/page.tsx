@@ -8,4 +8,4 @@ import Admin from "./admin";
 const Page = () => {
   return <Admin />;
 };
-export default withAuth(Page);
+export default Page;

@@ -18,6 +18,7 @@ import {
 } from "./../../api/linkApi";
 import StyledLinkInput from "./styled";
 import { Button } from "../Button";
+import { TbPencil } from "react-icons/tb";
 // import Tooltip from "@mui/material/Tooltip";
 
 const MethodDetail = ({ method }) => {
@@ -171,13 +172,13 @@ export const LinkInput = (props) => {
   }, [inputEditing]);
   if (!initialData) return <h1>Loading</h1>
   return (
-    <div style={{ background: "white", marginBottom: 10 }} className="shadow-md rounded-2xl">
+    <div style={{ background: "white", marginBottom: 10 }} className=" rounded-2xl ">
       <StyledLinkInput>
         <div className="dragHandle" {...props.listeners} {...props.attributes} style={{ cursor: 'grab' }}>
           <PiDotsSixVertical size={20} color={"gray"} />
         </div>
 
-        <div className="rightSection">
+        <div className="rightSection md:gap-24 sm:gap-2 ">
           <div>
             {inputEditing.title ? (
               <input
@@ -215,11 +216,11 @@ export const LinkInput = (props) => {
                 >
                   {initialData.title ? initialData.title : "Title"}
                 </div>
-                <MdOutlineEdit
+                <TbPencil
                   size={20}
                   color={"black"}
                   style={{ marginLeft: 5, cursor: "pointer" }}
-                ></MdOutlineEdit>
+                ></TbPencil>
               </div>
             )}
             {inputEditing.url ? (
@@ -261,10 +262,11 @@ export const LinkInput = (props) => {
               </div>
             )}
 
-            <div className="functionalityWrapper flex" style={{ paddingTop: 10 }}>
+            <div className="functionalityWrapper flex mt-2 gap-6" style={{ paddingTop: 10 }}>
               {/* <div> */}
               <FaDirections
-                className={` function Redirect  ${initialData.methods?.Redirect && "active"
+
+                className={` function Redirect    ${initialData.methods?.Redirect && "active"
                   } `}
                 size={30}
                 onClick={() => {
@@ -312,10 +314,9 @@ export const LinkInput = (props) => {
             </div>
           </div>
           <div
+            className="pr-5 text-right flex "
             style={{
-              paddingRight: 20,
-              textAlign: "right",
-              display: "flex",
+
               flexDirection: "column",
               justifyContent: "space-around",
             }}

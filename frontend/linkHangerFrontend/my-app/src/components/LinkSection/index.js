@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
-// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-// import { LinkInput } from "../LinkInput";
-// import { Button } from "../Button";
 import { Button } from "flowbite-react";
 import {
   useLinkUpdateMutation,
@@ -13,21 +10,7 @@ import {
 // import { DndContext } from '@dnd-kit/core';
 import Draggable from './Draggable'
 import { Droppable } from './Droppable'
-// // function Link({ quote, index }) {
-// //   return (
-// //     <Draggable draggableId={quote.id} index={index}>
-// //       {(provided) => (
-// //         <QuoteItem
-// //           ref={provided.innerRef}
-// //           {...provided.draggableProps}
-// //           {...provided.dragHandleProps}
-// //         >
-// //           {quote.content}
-// //         </QuoteItem>
-// //       )}
-// //     </Draggable>
-// //   );
-// // }
+
 
 // const LinkComponent = ({ provided, linkData }) => (
 //   <ul
@@ -165,13 +148,11 @@ export const LinkSection = () => {
     setParent(over ? over.id : null);
   }
   if (isLoading || isFetching) return <div>Loading</div>;
-  // if(isFetching)return <h5>Bomb</h5>
 
   return (
     <div
       className="sm:w-fit  sm:mx-auto flex"
       style={{
-        // display: "flex",
         flexDirection: "column",
         // padding: "30px 30px 10px 30px",
       }}
@@ -201,43 +182,9 @@ export const LinkSection = () => {
       </div>
 
       <div className="listDataWrapper" style={{ padding: 20 }}>
-        {/* <DndContext onDragEnd={handleOnDragEnd}>
-          {!parent ? draggable : null}
-          <Droppable id="droppable">
-            {parent === "droppable" ? draggable : 'Drop here'}
-          </Droppable>
-        </DndContext> */}
+
         {linkState.length && <App data={linkState} functionSelected={functionSelected} />}
 
-        {/* <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided, snapshot) => (
-              <div {...provided.droppableProps} ref={provided.innerRef}>
-                {linkState.map((item, index) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
-                    {(provided, snapshot) => (
-                      <div ref={provided.innerRef} {...provided.draggableProps}>
-                        <LinkInput
-                          data={item}
-                          provided={provided}
-                          functionSelected={functionSelected}
-                        ></LinkInput>
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
-                {provided.placeholder}
-
-                {item.}
-              </div>
-
-              // <LinkComponent
-              //   provided={provided}
-              //   linkData={linkData}
-              // ></LinkComponent>
-            )}
-          </Droppable>
-        </DragDropContext> */}
       </div>
     </div>
   );

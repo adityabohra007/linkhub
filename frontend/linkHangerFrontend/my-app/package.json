@@ -13,6 +13,7 @@
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@reduxjs/toolkit": "^2.8.0",
+    "@xyflow/react": "^12.8.0",
     "axios": "^1.10.0",
     "flowbite-react": "^0.11.7",
     "formik": "^2.4.6",

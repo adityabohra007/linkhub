@@ -116,7 +116,7 @@ body,
 }
 .Container .Main{
   display: grid;
-  grid-template-columns: 1fr minmax(200px,350px);
+  grid-template-columns: 1fr minmax(450px,500px);
   grid-template-rows: 60px auto;
 }
 

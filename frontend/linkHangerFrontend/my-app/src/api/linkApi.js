@@ -5,13 +5,6 @@ export const linkApi = createApi({
     reducerPath: "linkAuth",
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.NEXT_PUBLIC_API_ROOT + "/api",
-        prepareHeaders: (headers, { getState }) => {
-            const token = getState().auth.token;
-            if (token) {
-                headers.set("authorization", "Bearer " + token);
-            }
-            return headers;
-        },
     }),
     tagTypes: ["Link"],
     endpoints: (builder) => ({
@@ -47,7 +40,6 @@ export const linkApi = createApi({
             invalidatesTags: ['Link']
             // invalidatesTags: (result, error, arg) => [{ type: "Link", id: "LIST" }],
         }),
-        // builder.query(() => "theme/selected");
     }),
 });
 

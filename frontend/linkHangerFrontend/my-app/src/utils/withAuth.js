@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useGetUserQuery, useUserQuery } from '@/api/authApi'
 
 const withAuth = (Component) => {
+    return <Component />
     return function ProtectedComponent(props) {
         const router = useRouter()
         const user = useUserQuery()
