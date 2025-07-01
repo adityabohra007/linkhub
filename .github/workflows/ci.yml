@@ -1,0 +1,17 @@
+name: Linkhanger CI/CD workflow
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+env:
+  SECRET_KEY=django-insecure-+=&1nxqwgtqh)#!x0jgkc2@(o%sh%erj!r%@%s11mpwo9!e3cg
+  ALLOWED_HOSTS= 127.0.0.1 localhost
+  CORS_ALLOWED_ORIGINS=localhost
+  DB_NAME=postgres
+  DB_USER=testuser
+  DB_PASSWORD=testpassword
+  DB_HOST=db
+  DB_PORT=5432
+  DJANGO_SETTINGS_MODULE=linkhanger.settings.production

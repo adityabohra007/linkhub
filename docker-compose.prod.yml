@@ -11,7 +11,7 @@ services:
 
   web:
     build: ./linkhanger
-    command: python manage.py runserver 0.0.0.0:8000 --settings=linkhanger.settings.base
+    command: gunicorn linkhanger.wsgi:application --bind 0.0.0.0:8000 --workers 3 --timeout 120
     ports:
       - 8001:8000
     depends_on:
@@ -25,6 +25,7 @@ services:
     env_file:
       - ./linkhanger/.env
       # - ./linkhanger/.env.db
+      - ./linkhanger/.env.prod
       # - ./.env.secrets
     volumes:
       - ./linkhanger/:/usr/src/app/
