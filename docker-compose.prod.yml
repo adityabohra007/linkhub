@@ -23,9 +23,9 @@ services:
       - DB_HOST=db
       - DB_PORT=5432
     env_file:
-      - ./.env
+      - ./linkhanger/.env
       # - ./linkhanger/.env.db
-      - ./.env.prod
+      - ./linkhanger/.env.prod
       # - ./.env.secrets
     volumes:
       - ./linkhanger/:/usr/src/app/
