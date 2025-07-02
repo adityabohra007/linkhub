@@ -31,9 +31,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY}}
           port: 22
           script: |
-            rm -rf .env
-
-            cat .env
             sudo yum update -y
             sudo yum install git -y
             rm -rf linkhub
