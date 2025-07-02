@@ -38,14 +38,14 @@ jobs:
 
             cd ~/linkhub
             touch .env
-            echo "DJANGO_SETTINGS_MODULE=linkhanger.settings.production"
-            echo "ALLOWED_HOSTS= "184.72.109.27 localhost"
+            echo "DJANGO_SETTINGS_MODULE=linkhanger.settings.production" >> .env
+            echo "ALLOWED_HOSTS= "184.72.109.27 localhost" >> .env
             echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
             echo "DEBUG=True" >> .env
-            echo "DB_HOST=db"
-            echo "DB_NAME=postgres"
-            echo "DB_USER=testuser"
+            echo "DB_HOST=db" >> .env
+            echo "DB_NAME=postgres" >> .env
+            echo "DB_USER=testuser" >> .env
             touch .env.prod
             echo "Pulling latest code..."
             # git pull origin main
