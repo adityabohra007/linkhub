@@ -31,6 +31,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY}}
           port: 22
           script: |
+            touch .env
             echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
             sudo yum update -y
