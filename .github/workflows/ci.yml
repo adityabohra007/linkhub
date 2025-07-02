@@ -36,11 +36,11 @@ jobs:
             sudo yum install git -y
             rm -rf linkhub
             git clone https://github.com/adityabohra007/linkhub
-
-            cd ~/linkhub
+            git pull origin main
+            cd ~/linkhub/linkhanger
             touch .env
             echo "DJANGO_SETTINGS_MODULE=linkhanger.settings.production" >> .env
-            echo "ALLOWED_HOSTS=184.72.109.27 localhost" >> .env
+            echo 'ALLOWED_HOSTS="184.72.109.27 localhost"' >> .env
             echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
             echo "DEBUG=True" >> .env
@@ -48,8 +48,9 @@ jobs:
             echo "DB_NAME=postgres" >> .env
             echo "DB_USER=testuser" >> .env
             touch .env.prod
+            cd ..
+            
             echo "Pulling latest code..."
-            # git pull origin main
             # docker-compose pull
             docker-compose down
             docker-compose -f docker-compose.prod.yml up --build 
