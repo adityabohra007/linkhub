@@ -36,6 +36,7 @@ jobs:
             sudo yum install git -y
             rm -rf linkhub
             git clone https://github.com/adityabohra007/linkhub
+            cd ~/linkhub
             git pull origin main
             cd ~/linkhub/linkhanger
             touch .env
