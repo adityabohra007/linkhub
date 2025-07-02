@@ -31,10 +31,11 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY}}
           port: 22
           script: |
-            cd ~/linkhanger
+            # cd ~/linkhanger
+            git clone https://github.com/adityabohra007/linkhub
             echo "Pulling latest code..."
             git pull origin main
-            docker compose pull
-            docker compose down
-            docker compose up -d --build
+            docker-compose pull
+            docker-compose down
+            docker-compose up -d --build
             echo "Deployment complete ✅"
