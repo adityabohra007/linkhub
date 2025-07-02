@@ -39,11 +39,11 @@ jobs:
             sudo yum update -y
             sudo yum install git -y
             rm -rf linkhub
-            cd ~/linkhub
             git clone https://github.com/adityabohra007/linkhub
+            cd ~/linkhub
             echo "Pulling latest code..."
             # git pull origin main
-            docker-compose pull
+            # docker-compose pull
             docker-compose down
-            docker-compose up -d --build
+            docker compose -f docker-compose.prod.yml up --build 
             echo "Deployment complete ✅"
