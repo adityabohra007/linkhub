@@ -2,19 +2,19 @@ name: Linkhanger CI/CD workflow
 
 on:
   push:
-    branches: [main]
+    branches: [main,'ci-correction']
   pull_request:
-    branches: [main]
+    branches: [main,'ci-correction']
 env:
-  SECRET_KEY={{secrets.DJANGO_SECRET_KEY}}
-  ALLOWED_HOSTS= 127.0.0.1 localhost
-  CORS_ALLOWED_ORIGINS=localhost
-  DB_NAME=postgres
-  DB_USER=testuser
-  DB_PASSWORD=testpassword
-  DB_HOST=db
-  DB_PORT=5432
-  DJANGO_SETTINGS_MODULE=linkhanger.settings.production
+  SECRET_KEY: ${{secrets.DJANGO_SECRET_KEY}}
+  ALLOWED_HOSTS: "127.0.0.1"
+  CORS_ALLOWED_ORIGINS: "localhost"
+  DB_NAME: postgres
+  DB_USER: testuser
+  DB_PASSWORD: testpassword
+  DB_HOST: db
+  DB_PORT: 5432
+  DJANGO_SETTINGS_MODULE: linkhanger.settings.production
 
 jobs:
   build:
@@ -22,24 +22,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: action/checkout@v3
-      - name: Login in to hub
-        uses: docker/login-action@v2
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: sreehariskumar/flaskapp:latest
+        uses: actions/checkout@v3
       - name: deploying
         uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY}}
+          port: 22
           script: |
-            docker image pull sreehariskumar/flaskapp:latest
-            docker container stop flask
-            docker container rm flask
-            docker container run -d --name flask -p 80:5000 sreehariskumar/flaskapp
+            cd ~
+            sudo yum update -y
+            sudo yum install git -y
+            rm -rf linkhub
+            git clone https://github.com/adityabohra007/linkhub
+            cd ~/linkhub
+            git pull origin main
+            cd ~/linkhub/linkhanger
+            touch .env
+            echo "DJANGO_SETTINGS_MODULE=linkhanger.settings.production" >> .env
+            echo 'ALLOWED_HOSTS="184.72.109.27 localhost"' >> .env
+            echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
+            echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+            echo "DEBUG=True" >> .env
+            echo "DB_HOST=db" >> .env
+            echo "DB_NAME=postgres" >> .env
+            echo "DB_USER=testuser" >> .env
+            touch .env.prod
+            cd ..
+            
+            echo "Pulling latest code..."
+            # docker-compose pull
+            docker-compose down
+            docker-compose -f docker-compose.prod.yml up --build 
+            # docker compose -it exec
+            echo "Deployment complete ✅"
