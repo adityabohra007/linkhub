@@ -39,7 +39,7 @@ jobs:
             cd ~/linkhub
             touch .env
             echo "DJANGO_SETTINGS_MODULE=linkhanger.settings.production" >> .env
-            echo "ALLOWED_HOSTS= "184.72.109.27 localhost" >> .env
+            echo "ALLOWED_HOSTS=184.72.109.27 localhost" >> .env
             echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
             echo "DEBUG=True" >> .env
