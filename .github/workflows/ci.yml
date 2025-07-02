@@ -34,10 +34,11 @@ jobs:
             touch .env
             echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+            cat .env
             sudo yum update -y
             sudo yum install git -y
             rm -rf linkhub
-            cd ~/linkhanger
+            cd ~/linkhub
             git clone https://github.com/adityabohra007/linkhub
             echo "Pulling latest code..."
             git pull origin main
