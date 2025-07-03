@@ -47,7 +47,7 @@ services:
     volumes:
       - ./frontend/linkHangerFrontend/my-app:/app
     environment:
-      - NODE_ENV=development
-    command: npm run dev
+      - NODE_ENV=production
+    command: npm run start
 volumes:
   postgres_data:
