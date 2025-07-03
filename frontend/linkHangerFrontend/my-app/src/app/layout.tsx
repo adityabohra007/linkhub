@@ -1,5 +1,4 @@
-"use client";
-import Providers from "./providers";
+// import Providers from "./providers";
 import "./globals.css";
 
 // const geistSans = Geist({
@@ -28,7 +27,7 @@ export default function RootLayout({
       // className="font-roboto"
       // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        {/* <Providers>{children}</Providers> */}
       </body>
     </html>
   );

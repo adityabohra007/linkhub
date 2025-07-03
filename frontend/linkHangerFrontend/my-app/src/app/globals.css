@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
-@plugin "flowbite-react/plugin/tailwindcss";
-@source "../../.flowbite-react/class-list.json";
+/* @plugin "flowbite-react/plugin/tailwindcss"; */
+/* @source "..//../.flowbite-react/class-list.json"; */
 
 :root {
   --background: #ffffff;

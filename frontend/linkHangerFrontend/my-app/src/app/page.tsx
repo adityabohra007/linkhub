@@ -1,7 +1,7 @@
 // import Image from "next/image";
 
-import { ReactFlow } from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
+// import { ReactFlow } from "@xyflow/react";
+// import "@xyflow/react/dist/style.css";
 import Link from "next/link";
 export default function Home() {
   const initialNodes = [
@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <div style={{ width: "100vw", height: "100vh" }}>
         <div>LinkHanger Home</div>
-        <Link href="/login">Login</Link>
+        {/* <Link href="/login">Login</Link> */}
       </div>
       {/* <ReactFlow nodes={initialNodes} edges={initialEdges} /> */}
     </>
