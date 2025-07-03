@@ -47,6 +47,6 @@ services:
       - ./frontend/linkHangerFrontend/my-app:/app
     environment:
       - NODE_ENV=development
-    command: npm run build && npm run dev
+    command: npm run dev
 volumes:
   postgres_data:

@@ -53,6 +53,7 @@ jobs:
             
             echo "Pulling latest code..."
             # docker-compose pull
+            docker system purge -y
             docker-compose down
             docker-compose -f docker-compose.prod.yml up --build 
             # docker compose -it exec
