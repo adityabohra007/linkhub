@@ -2,9 +2,9 @@ name: Linkhanger CI/CD workflow
 
 on:
   push:
-    branches: [main,'ci-correction']
+    branches: [main]
   pull_request:
-    branches: [main,'ci-correction']
+    branches: [main]
 env:
   SECRET_KEY: ${{secrets.DJANGO_SECRET_KEY}}
   ALLOWED_HOSTS: "127.0.0.1"
@@ -41,7 +41,7 @@ jobs:
             cd ~/linkhub/linkhanger
             touch .env
             echo "DJANGO_SETTINGS_MODULE=linkhanger.settings.production" >> .env
-            echo 'ALLOWED_HOSTS="184.72.109.27 localhost"' >> .env
+            echo 'ALLOWED_HOSTS="${{secrets.SSH_HOST localhost}}"' >> .env
             echo "DJANGO_SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}" >> .env
             echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
             echo "DEBUG=True" >> .env
@@ -53,6 +53,7 @@ jobs:
             
             echo "Pulling latest code..."
             # docker-compose pull
+            docker system prune -f
             docker-compose down
             docker-compose -f docker-compose.prod.yml up --build 
             # docker compose -it exec

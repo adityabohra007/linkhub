@@ -11,7 +11,8 @@ services:
 
   web:
     build: ./linkhanger
-    command: gunicorn linkhanger.wsgi:application --bind 0.0.0.0:8000 --workers 3 --timeout 120
+    command: sh -c "python manage.py migrate && gunicorn linkhanger.wsgi:application --bind 0.0.0.0:8000 --workers 3 --timeout 120"
+
     ports:
       - 8001:8000
     depends_on:
@@ -46,8 +47,7 @@ services:
       - 3000:3000
     volumes:
       - ./frontend/linkHangerFrontend/my-app:/app
-    environment:
-      - NODE_ENV=production
+    # environment:
     command: npm run start
 volumes:
   postgres_data:
