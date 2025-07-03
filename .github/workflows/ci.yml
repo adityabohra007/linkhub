@@ -2,9 +2,9 @@ name: Linkhanger CI/CD workflow
 
 on:
   push:
-    branches: [main,'ci-correction']
+    branches: [main]
   pull_request:
-    branches: [main,'ci-correction']
+    branches: [main]
 env:
   SECRET_KEY: ${{secrets.DJANGO_SECRET_KEY}}
   ALLOWED_HOSTS: "127.0.0.1"
